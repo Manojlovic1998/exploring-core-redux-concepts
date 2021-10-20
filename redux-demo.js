@@ -5,9 +5,20 @@ const redux = require('redux');
 // No API calls within the function
 // "Same input" leads to "same output"
 const counterReducer = (state = {counter: 0}, action) => {
-    return {
-        counter: state.counter + 1,
-    };
+    "use strict";
+    if (action.type === 'increment') {
+        return {
+            counter: state.counter + 1
+        };
+    }
+    if (action.type === 'decrement') {
+        return {
+            counter: state.counter - 1,
+        };
+    }
+
+    
+    return state;
 };
 
 // Create a store
@@ -25,4 +36,5 @@ const counterSubscriber = () => {
 store.subscribe(counterSubscriber);
 
 // Dispatches an action
-store.dispatch({ type: 'increment'});
+store.dispatch({type: 'increment'});
+store.dispatch({type: 'decrement'});
