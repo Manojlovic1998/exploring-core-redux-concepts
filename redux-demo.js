@@ -5,7 +5,6 @@ const redux = require('redux');
 // No API calls within the function
 // "Same input" leads to "same output"
 const counterReducer = (state = {counter: 0}, action) => {
-    "use strict";
     if (action.type === 'increment') {
         return {
             counter: state.counter + 1
@@ -16,7 +15,6 @@ const counterReducer = (state = {counter: 0}, action) => {
             counter: state.counter - 1,
         };
     }
-
     
     return state;
 };
